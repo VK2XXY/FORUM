@@ -1,0 +1,69 @@
+<?
+
+$msg["author"] = "Autorius";
+$msg["date"]   = "Data";
+$msg["subject"]   = "Pavadinimas";
+
+$msg["msg_text"]  = "Tekstas";
+$msg["send_msg"] = "Siøsti skelbimà";
+$msg["reset_msg"] = "Iðtrinti skelbimà";
+$msg["orig_msg_text"] = "Cituoti originalà";
+$msg["cancel"] = " Atðaukti ";
+
+$msg["new_thread"] = "Sukurti skelbimà naujoje ðakoje";
+$msg["your_msg_new_subject"] = "Jûsø skelbimas";
+$msg["your_msg_on_subject"] = "Jûsø skelbimas ðakoje ";
+
+$msg["close_win"] = "Uþdaryti langà";
+$msg["full_list"] = "Visi skelbimai";
+
+$msg["continue_thread"] = "Atsakyti";
+$msg["open_subthread"]  = "Sukurti poðaká";
+
+$msg["name"] = "Jûsø vardas";
+$msg["enter_name"] = "Praðome ávesti savo vardà";
+$msg["enter_subj"] = "Praðome ávesti skelbimo pavadinimà";
+
+$msg["view_article"] = "Paþiûrëti skelbimà";
+
+$msg["all"] = "all";
+$msg["view_articles_for_last"] = "Paþiûrëti tokio senumo skelbimus";
+$msg["days"] = "dienø";
+$msg["go"] = " Eiti ";
+
+$msg["all_articles"] = "Visi skelbimai";
+
+$msg["remote_host"] = "Vartotojo hostas";
+$msg["remote_addr"] = "Vartotojo IP adresas";
+$msg["proxy_addr"]  = "Adresas uþ proxy";
+
+$msg["search"] = "Rasti";
+
+$msg["any"] = "bet koká";
+$msg["all"] = "visus";
+$msg["exact"] = "tiksliai";
+$msg["keywords"] = "Paieðkos þodþiai";
+
+$msg["tot_found"] = "Ið viso rasta áraðø";
+
+$msg["stats"] = "Statistika";
+$msg["noread"] = "Niekas dar neskaitë";
+
+$msg["ch_timeframe"] = "Pakeisti laikà";
+$msg["st_date"] = "Pradþios data";
+$msg["en_date"] = "Pabaigos data";
+$msg["tot_vis"] = "Ið viso skaitytojø";
+$msg["host"] = "Hostas";
+$msg["date_visit"] = "Data";
+
+$msg["back"] = "Atgal";
+
+$msg["views"] = "Perþiûros";
+
+$msg["all_thread_articles"] = "Matyti visus skelbimus ðakoje";
+
+$msg["Delete_selected_messages"] = "Delete selected messages";
+
+$msg["really_delete"] = "Really want to delete messages?";
+
+?>

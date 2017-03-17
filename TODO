@@ -1,0 +1,11 @@
+
+ (L)ow priority
+ (H)igh priority
+ (N)ormal priority
+
+ (L) - Better documentation (as always)
+ (N) - More comments to sources
+ (N) - Work with database in one module
+ (N) - Multiforum support
+ (N) - Administration upgrade
+ (N) - Authorization?

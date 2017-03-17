@@ -1,0 +1,28 @@
+
+ You'll need working Mysql database and PHP3-enabled Apache to get it working.
+
+Part 1:   Forum installation
+
+1. Unpack forum-x.x.tgz :
+    gzip -d -c | tar xf -
+    
+2. Edit setup.php3 and setup variables for mysql database,user,password and
+   table name. Mysql table will be autocreated.
+   Mysql table description is located in forum.sql
+
+3. Open in browser http://your.site.com/cool_forum/ to view forum.
+4. Open  http://your.site.com/cool_forum/admin.php3 for administration. 
+   If you don't setup apache authentication for this file (and for the 
+   stats.php3) you'll have to set username and password in setup.php3.
+5. SECURITY is on your own task.
+
+Part 2:   Customizing forum
+
+1. Edit options in setup.php3.
+2. Edit header.inc and footer.inc - for main forum page.
+3. Edit short_header.inc and short_footer.inc - for 'read message' page,
+   admin page, and search page.
+4. You can also change images in img/ subdirectory. See img/README file.
+5. Edit source code of forum and contribute changes to authors :))
+
+

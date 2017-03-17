@@ -1,0 +1,199 @@
+cvs tag forum_2_0_12
+
+04 Aug 2000
+    * Added lang_cn.inc for Chinese (big5) translation. [poma]
+      Thanx to "kylin" <kylin@netvigator.com.tw>
+    * Added lang_it.inc for italian translation. [poma]
+      Thanx to  <stanley.kubrick@libero.it>
+    * Added lang_fi.inc for finnish translation. [poma]
+      Thanx to Kari.Karvonen@outokumpu.com
+    * Added lang_pt.inc for (brasilian) portuguese translation. [poma]
+      Thanx to Helio Nunes (dedalu) <dedalu@linuxbr.com.br>
+
+cvs tag forum_2_0_11
+
+03 May 2000
+    * Added lang_pl.inc for polish translation. [poma]
+      Thanx to "Leszek 'Leon' Krupiñski" <d@z.pl>
+
+cvs tag forum_2_0_10
+
+28 Apr 2000
+    * lang_du.inc replaced with better version from 
+      "Michel Arendsen" <michel@arendsen.cx> [poma]
+
+20/12/99
+    - Added lang_no.inc for norwegian translation. (poma)
+      Thanx to Thomas Haukland <tompi@picasso.uib.no>
+
+cvs tag forum_2_0_9
+
+24/11/99
+    - lang_lt for _lithuanian_ translation
+      Thanx to Useless! BTW, where is latvian translation? ;) (poma)
+
+cvs tag forum_2_0_8
+
+22/11/99
+    - Added lang_lt.inc for latvian translation. (poma)
+      Thanx to "www.Laikas.lt Webmaster" <webmaster@laikas.lt>
+
+17/11/99
+    - Added lang_du.inc for dutch translation. (poma)
+      Thanx to "Arjen van Aalderen" <arjen@totaal.com>
+
+16/11/99
+    - Added lang_br.inc for brazilian translation. (poma)
+      Thanx to Arthur Vieira e Tania Ferraro <arthuretania@ax.apc.org> 
+
+29/10/99
+    - Added lang_id.inc for indonesian translation. (poma)
+      Thanx to Ronny Wibowo <ronnyw@mitra.net.id>
+
+cvs tag forum_2_0_7
+
+27/09/99
+    - Added lang_dk.inc for Danish translation. (poma)
+      Thanx to  Morten Gade SÜrensen <morten@aurora.ms>
+    
+20/09/99
+    - MySQL table autocreating bug with table name fixed (poma)
+      Thanx to Robby Stephenson <robby.stephenson@usa.net>
+
+13/09/99
+    - Bug with message post datetime in all thread message fixed (poma)
+      Thanx to Eddie Chang <edchang@ix.netcom.com>
+
+cvs tag forum_2_0_6
+
+08/09/99
+    - New forum logo added (poma)
+      Thanx to Birin Michael <bmv@itcenter.ru>
+
+19/08/99
+    - Mail messages headers don't depends client selected language (poma)
+    - Parameters of JS opened window in $js_window_param (poma)
+
+18/08/99
+    - Quoting of messages with " now work correct (poma)
+
+cvs tag forum_2_0_5
+
+13/08/99
+    - Fixed bug with reply to author feature (poma)
+    - Create subthread only in message with pid!=0 (poma)
+
+12/08/99
+    - <pre> tag inserted in html mode for better look (poma)
+
+11/08/99
+    - Added lang_hu.inc for the Hungarian translation. (poma)
+      Thanx to Kadi Gergo <gergo@dlux.sch.bme.hu>
+
+cvs tag forum_2_0_4
+
+11/08/99
+    - Little bug in lib.php3 fixed (poma)
+
+cvs tag forum_2_0_3
+
+10/08/99
+    - Little bug in forum.php3 fixed (poma)
+
+cvs tag forum_2_0_2
+
+30/07/99
+    - Some bugs fixed (poma)
+
+27/07/99
+    - Saving opened thread in cookies (poma)
+    - Added '+'and '-' images to all threads (poma)
+
+26/07/99
+    - Added '+'and '-' images to threads (poma)
+
+23/07/99
+    - Fixed bug with saving lang to cookies (poma)
+
+02/07/99
+    - Fixed bug when all messages are shown in non-html mode.
+
+cvs tag forum_1_1_pre1
+
+30/06/99
+     - Forum mysql table autocreating. (poma)
+     - View all messages in a thread simultaneously. (poma)
+     - Languages and some others bugs fixed. (poma)
+
+29/06/99
+     - Sending email to the author of the message if someone make a reply on it. (poma)
+     - Added language switcher to the main page. (poma)
+     - Widths of All tables in %%. (poma)
+     - Killed all ";" in SQL-queries. (poma)
+
+11/06/99
+    - Added lang_fr.inc for French translation. (poma)
+      Thanx to Erwan <erwan@ornitho.org>
+    - Forum logo added (poma)
+    - Fixed security bug in editmsg.php3 (poma)
+    - Bug fix: sometimes admin.php3 shows not all existing messages (kir)
+    
+09/06/99
+    - Added lang_de.inc for the German translation. (poma)
+      Thanx to Thomas Linden <tom@daemon.de>
+    - Grammar corrections
+    - TODO additions
+
+cvs tag forum_1_1b2
+
+07/06/99
+    - designed for IE (poma)
+    - Removed menubar in search ReadMsg() function (poma)
+    - Fixed bug with first empty line in forum table (poma)
+    - Added CSS dynamic link underline in IE (poma)
+    - Fixed IE bug with CSS <td>-tag (poma)
+    - Added lang_es.inc for the Spanish translation. (poma)
+      Thanx to Jordi Llonch <llonchj@pasifae.com>
+
+03/06/99
+    - Now search form is located on main forum page. It can be 
+      switched off in setup.php3 ($with_search variable)
+    - We don't show "Go" button if javascript enabled (kir)
+    - Now we alway cal htmlspecialchars when editin the messages (kir)
+    - Fixed bug with redirect after creating brand new messages. (kir)
+    - Fixed bug about limiting 'new' messages cookie lifetime to current
+      session. Now cookies are saved for 100 days since last message view (kir)
+
+02/06/99
+    - removed button bar from JS-windows (kir)
+    - changed format of column widths. now it is possible to use percents. (kir)
+
+cvs tag forum_1_1b1
+
+02/06/99
+    - added reload of main window after viewing of new message when 
+      cookies are on (to unset 'new' mark). (kir)
+    - added ability to view amount of views of particular message
+      in administration script. (kir)
+    - added optional authentication for the administration scripts. (kir)
+      $admin_name and $admin_pwd in setup.php3.
+    - stats.php3 returned back. Now one can set timeframe to 
+      get statistics for (kir)
+
+01/06/99
+    - removed stats.php3. Stats added to editmsg.php3 (poma)
+    - added stats.php3 to view visitors statistics - simple
+    - added logging of viewing messages in the separate table 
+      (including start page) (kir)
+    - adapted for 'javascript off' and 'css off' mode (poma)
+    - default days value (poma)
+    - search design (poma)
+
+01/06/99
+    - bugfixes for mode when cookies are off (kir)
+
+31/05/1999    cvs tag release_1_0 
+
+28/05/99
+    Added admin.php3 (kir)
+

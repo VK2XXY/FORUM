@@ -1,0 +1,6 @@
+php3_gpc_order CGP
+php3_magic_quotes_runtime off
+php3_magic_quotes_gpc on
+
+DirectoryIndex index.php3
+
