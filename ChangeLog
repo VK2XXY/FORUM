@@ -1,3 +1,6 @@
+17 Mar 2017
+   * Imported into GitHub
+
 cvs tag forum_2_0_12
 
 04 Aug 2000
@@ -14,7 +17,7 @@ cvs tag forum_2_0_11
 
 03 May 2000
     * Added lang_pl.inc for polish translation. [poma]
-      Thanx to "Leszek 'Leon' Krupiñski" <d@z.pl>
+      Thanx to "Leszek 'Leon' KrupiÃ±ski" <d@z.pl>
 
 cvs tag forum_2_0_10
 
@@ -54,7 +57,7 @@ cvs tag forum_2_0_7
 
 27/09/99
     - Added lang_dk.inc for Danish translation. (poma)
-      Thanx to  Morten Gade SÜrensen <morten@aurora.ms>
+      Thanx to  Morten Gade SÃœrensen <morten@aurora.ms>
     
 20/09/99
     - MySQL table autocreating bug with table name fixed (poma)
