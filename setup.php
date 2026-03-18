@@ -1,4 +1,4 @@
-<?
+<?php
 ## Default language file select: (Look at lang_ru.inc,lang_en.inc,lang_es.inc etc)
 ## filename = "lang_" + $default_lang + ".inc"
 $default_lang = "en";
@@ -59,7 +59,7 @@ $order_asc_or_desc = "asc";
 
 
 ## If there is no Apache authentication for the administration scripts
-## (admin.php3 and stats.php3), we do our own authentication with
+## (admin.php and stats.php), we do our own authentication with
 ## username/password entered below:
 $admin_name = "admin";
 $admin_pwd  = "change_it";
@@ -97,10 +97,9 @@ $datewidth = "20%";
 $js_window_params = "directories=no,height=440,width=720,location=no,menubar=no,resizable=yes,scrollbars,status=no,toolbar=no";
 
 //For language switcher
-//echo $QUERY_STRING;
-//echo $lang;
 if (!isset($lang)) $lang = $default_lang;
-if ($setlang != "") $lang = $setlang;
+if (!empty($_REQUEST['setlang'])) $lang = $_REQUEST['setlang'];
+if (isset($setlang) && $setlang != "") $lang = $setlang;
 include("lang_$lang.inc");
 
 function mouse_text($text)
@@ -110,8 +109,8 @@ function mouse_text($text)
 $rcnt = 0;
 function RCount () { global $rcnt,$bgcolor1,$bgcolor2; $rcnt++; if ($rcnt % 2 == 1) { return $bgcolor1; } else { return $bgcolor2; } }
 
-if( $set_cookie && isset($viewed_articles) ) {
-    $viewed_ = unserialize($viewed_articles);
+if( $set_cookie && isset($_COOKIE['viewed_articles']) ) {
+    $viewed_ = unserialize($_COOKIE['viewed_articles']);
 }
 function p_if($bool,$str)
 {
@@ -120,12 +119,16 @@ function p_if($bool,$str)
     }
 }
 
-if (!empty($HTTP_X_FORWARDED_FOR)){
-    $REMOTE_HOST = gethostbyaddr($HTTP_X_FORWARDED_FOR);
-    $REMOTE_ADDR = $HTTP_X_FORWARDED_FOR;
-}
-elseif ( empty($REMOTE_HOST) ){
-    $REMOTE_HOST = gethostbyaddr($REMOTE_ADDR);
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+    $REMOTE_HOST = gethostbyaddr($_SERVER['HTTP_X_FORWARDED_FOR']);
+    $REMOTE_ADDR = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'] ?? '';
+    if ( empty($_SERVER['REMOTE_HOST']) ){
+        $REMOTE_HOST = gethostbyaddr($REMOTE_ADDR);
+    } else {
+        $REMOTE_HOST = $_SERVER['REMOTE_HOST'];
+    }
 }
 
 $stat_table = "_$mysql_table"."_stats";
@@ -133,14 +136,15 @@ $stat_table = "_$mysql_table"."_stats";
 function do_stats($id)
 {
     global $mysql_table, $allow_stats, $stat_table;
-    global $REMOTE_HOST,$REMOTE_ADDR;
+    global $REMOTE_HOST, $REMOTE_ADDR;
+    global $conn;
     if ( empty($allow_stats) ){
         return;
     }
     
-    $res = @mysql_query("DESC $stat_table");
-    if ( mysql_errno() != 0 ) {
-        mysql_query(
+    $res = @mysqli_query($conn, "DESC $stat_table");
+    if ( mysqli_errno($conn) != 0 ) {
+        mysqli_query($conn,
             "create table $stat_table (".
             "id int not null, ".
             "host char(80) not null, ".
@@ -149,8 +153,6 @@ function do_stats($id)
             "index (host) )");
     }
     
-    mysql_query("insert into $stat_table (id, host) ".
+    mysqli_query($conn, "insert into $stat_table (id, host) ".
                 " values ($id,'$REMOTE_HOST') ");
 }
-
-?>

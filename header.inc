@@ -11,7 +11,7 @@
 <table width="90%" align="center" border="0" cellpadding="0" cellspacing="0">
 <tr><td>
 
-<h2>PHP3/MySQL Forum</h2>
+<h2>PHP/MySQL Forum</h2>
 
 <table width="50%" border="0" cellpadding="0" cellspacing="0">
 <tr>
@@ -34,5 +34,5 @@ Download:
 </table>
 
 <center><h3>Forum demo</h3></center>
-<a href="admin.php3">Administration demo</a> (login: admin, password: change_it)
+<a href="admin.php">Administration demo</a> (login: admin, password: change_it)
 

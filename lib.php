@@ -1,12 +1,12 @@
-<?
+<?php
 /*
-*   $Id: lib.php3,v 1.7 1999/08/11 07:59:54 poma Exp $
+*   $Id: lib.php,v 1.8 converted to PHP8 $
 */
 
 
 /*=========================================================================
 *       Function SaveUserInCookie()
-            Saving vars itcusername É itcuseremail
+            Saving vars itcusername  itcuseremail
             in Cookie
 /*=========================================================================*/
 Function SaveUserInCookie()
@@ -24,17 +24,15 @@ Function SaveUserInCookie()
 
 
 /*
-   Authorization with $PHP_AUTH_USER É $PHP_AUTH_PW
+   Authorization with $PHP_AUTH_USER  $PHP_AUTH_PW
 */
 Function RequireAuthentication ($realm)
 {
-    global $PHP_AUTH_USER, $PHP_AUTH_PW;
-        
     if ($realm == "")
     {
         $realm = "Unknown";
     }
-    if( ($PHP_AUTH_USER == "") || ($PHP_AUTH_PW == "") ) 
+    if( (empty($_SERVER['PHP_AUTH_USER'])) || (empty($_SERVER['PHP_AUTH_PW'])) )
     {
         Header("WWW-authenticate: basic realm=\"$realm\"");
         Header("HTTP/1.0 401 Unauthorized");
@@ -42,7 +40,7 @@ Function RequireAuthentication ($realm)
         <HEAD></HEAD>
         <BODY>
        </BODY>
-    <?    
+    <?php    
         exit;
     } 
 }
@@ -51,8 +49,8 @@ Function RequireAuthentication ($realm)
 
 Function EscapeChars ($text) 
 {
-    $text = ereg_replace("[\[\]<>&]","_",$text);
-    $text = ereg_replace("\"","'",$text); 
+    $text = preg_replace("/[\[\]<>&]/","_",$text);
+    $text = preg_replace("/\"/","'",$text); 
     return $text;
 }
 
@@ -100,5 +98,3 @@ Function wrap_plain($str, $wrap = 79)
     }
     return "$str";
 }
-
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 if ($days=="") 
 {
     $days = $default_days;
@@ -12,12 +12,12 @@ if (!empty($open) && $ppid == 0)
 <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
 <!--
 function ReadMsg (id,pid,days,js,lang) {
-    if ( window.name != "newmsg" && (<?echo intval($view_new_win)?> == 1) ) {
-        w = window.open ("readmsg.php3?id=" + id + "&pid=" + pid +"&days="+days+"&js="+js+"&lang="+lang, "newmsg", "<? echo $js_window_params ?>");
+    if ( window.name != "newmsg" && (<?php echo intval($view_new_win)?> == 1) ) {
+        w = window.open ("readmsg.php?id=" + id + "&pid=" + pid +"&days="+days+"&js="+js+"&lang="+lang, "newmsg", "<?php echo $js_window_params ?>");
         w.focus();
     }
     else {
-        return 'readmsg.php3?id=' + id + '&pid=' + pid +'&days=' +days +'&js=' +js +'&lang=' +lang;
+        return 'readmsg.php?id=' + id + '&pid=' + pid +'&days=' +days +'&js=' +js +'&lang=' +lang;
     }
     
     return '#';
@@ -25,18 +25,15 @@ function ReadMsg (id,pid,days,js,lang) {
 //-->
 </SCRIPT>
 
-<?
+<?php
 
-mysql_pconnect("$mysql_host","$mysql_user","$mysql_password");
-mysql_select_db("$mysql_base");
-
-$q=mysql_query("select *,date_format(times, '%d/%m/%Y %H:%i') as ttimes ".
+$q=mysqli_query($conn, "select *,date_format(times, '%d/%m/%Y %H:%i') as ttimes ".
                    ",UNIX_TIMESTAMP(times) as ut ".
                    "from $mysql_table ".
                    "where level<='$maxlevel' ".
                    "and archive='N' order by times $order_asc_or_desc");
                    
-while($row = mysql_fetch_array($q)) {
+while($row = mysqli_fetch_array($q)) {
       $pid=$row["pid"];
       $id=$row["id"];
 
@@ -192,15 +189,15 @@ if(is_array($orderedidm))
 ?>
 
 <!-- FORUM TABLE -->
-<table align="left" border="0" cellpadding="2" cellspacing="0" bgcolor="<? echo $titlecolor; ?>" width="<?echo $width?>"><TD><table border=0 cellspacing="0" cellpadding="0" width="100%">
-<?
+<table align="left" border="0" cellpadding="2" cellspacing="0" bgcolor="<?php echo $titlecolor; ?>" width="<?php echo $width?>"><TD><table border=0 cellspacing="0" cellpadding="0" width="100%">
+<?php
 
 echo "<tr valign=\"middle\" bgcolor=\"$headercolor\">\n";
 echo " <td class=\"t\"><b>$msg[subject]</b></td>\n";
 echo " <td width=\"$authwidth\" class=\"t\"><b>$msg[author]</b></td>\n <td width=\"$datewidth\" class=\"t\"><b>$msg[date]</b></td>";
 echo "</tr>\n";
 
-while ( list( $key, $val ) = each($orderedidm)) 
+foreach ($orderedidm as $key => $val)
 {
     if($val!=0) //skip first empty line
     {
@@ -251,7 +248,7 @@ while ( list( $key, $val ) = each($orderedidm))
                         $open[$val] = 0;
                         if (!empty($open)) $opentemp = urlencode(serialize($open));
                         $open[$val] = 1;
-                        echo "<a href=\"$PHP_SELF?days=$days&js=$js&lang=$lang&open=$opentemp\" ";
+                        echo "<a href=\"" . htmlspecialchars($_SERVER['PHP_SELF']) . "?days=$days&js=$js&lang=$lang&open=$opentemp\" ";
                         mouse_text("");
                         echo "><img src=\"img/b5.gif\" width=20 height=20 border=0 vspace=0 hspace=0 align=left>";
                         echo "</a>";
@@ -261,7 +258,7 @@ while ( list( $key, $val ) = each($orderedidm))
                         $open[$val] = 1;
                         $opentemp = urlencode(serialize($open));
                         $open[$val] = 0;
-                        echo "<a href=\"$PHP_SELF?days=$days&js=$js&lang=$lang&open=$opentemp\" ";
+                        echo "<a href=\"" . htmlspecialchars($_SERVER['PHP_SELF']) . "?days=$days&js=$js&lang=$lang&open=$opentemp\" ";
                         mouse_text("");
                         echo "><img src=\"img/b4.gif\" width=20 height=20 border=0 vspace=0 hspace=0 align=left>";
                         echo "</a>";
@@ -275,13 +272,13 @@ while ( list( $key, $val ) = each($orderedidm))
  
         if ($val != $iid) 
         { 
-            echo " <nobr><a class=\"s\" href=\"readmsg.php3?id=$val&pid=$pd&days=$days&js=$js&lang=$lang\" OnClick=\"window.status=''; this.href = ReadMsg($val,$pd,$days,$js,'$lang');\" ";
+            echo " <nobr><a class=\"s\" href=\"readmsg.php?id=$val&pid=$pd&days=$days&js=$js&lang=$lang\" OnClick=\"window.status=''; this.href = ReadMsg($val,$pd,$days,$js,'$lang');\" ";
             mouse_text($msg['view_article']);
             echo " >$subj_[$val]</a>";
             if (isset($has_hidden_messages[$val])) 
             {
                 print "&nbsp;&nbsp;";
-                print "<a class=\"s\" href=\"readmsg.php3?id=$val&pid=$pd&days=1000000&js=$js&lang=$lang\" OnClick=\"window.status=''; this.href = ReadMsg($val,$pd,1000000,$js,'$lang');\" ";
+                print "<a class=\"s\" href=\"readmsg.php?id=$val&pid=$pd&days=1000000&js=$js&lang=$lang\" OnClick=\"window.status=''; this.href = ReadMsg($val,$pd,1000000,$js,'$lang');\" ";
                 mouse_text($msg['all_articles']);
                 print " ><span class=\"d\"><FONT SIZE=-2><u>$msg[all_articles]</u></FONT></span></a>";
             }
@@ -307,7 +304,7 @@ while ( list( $key, $val ) = each($orderedidm))
 </table></table>
 <!-- /FORUM TABLE -->
 
-<?
+<?php
 }  // If there are messages exists
 
 function is_days_sel($d)
@@ -330,53 +327,51 @@ function is_lang_sel($l)
 ?>
 <br clear=all>
 <P>
-<?
+<?php
 if($view_articles_for_last)
 {
 ?>
-<FORM METHOD=get ACTION="<?echo $PHP_SELF;?>" name=daysfrm>
+<FORM METHOD=get ACTION="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" name=daysfrm>
 <table border="0" cellspacing="0" cellpadding="0" width="100%">
 <td>
 <div align="left">
 <SMALL>
-<?echo $msg["view_articles_for_last"]?>&nbsp;&nbsp;<SELECT name=days onChange="xxx=daysfrm.elements['days']; if (xxx.options[xxx.selectedIndex].value != <?echo $days?>) {daysfrm.submit();}">
-<option value="7"  <?is_days_sel(7);?>> 7 <?echo $msg["days"]; ?> </option>
-<option value="14" <?is_days_sel(14);?>> 14 <?echo $msg["days"]; ?> </option>
-<option value="30" <?is_days_sel(30);?>> 30 <?echo $msg["days"]; ?> </option>
-<option value="60" <?is_days_sel(60);?>> 60 <?echo $msg["days"]; ?> </option>
-<option value="10000" <?is_days_sel(10000);?>> <?echo $msg["all"]?> </option>
+<?php echo $msg["view_articles_for_last"]?>&nbsp;&nbsp;<SELECT name=days onChange="xxx=daysfrm.elements['days']; if (xxx.options[xxx.selectedIndex].value != <?php echo $days?>) {daysfrm.submit();}">
+<option value="7"  <?php is_days_sel(7);?>> 7 <?php echo $msg["days"]; ?> </option>
+<option value="14" <?php is_days_sel(14);?>> 14 <?php echo $msg["days"]; ?> </option>
+<option value="30" <?php is_days_sel(30);?>> 30 <?php echo $msg["days"]; ?> </option>
+<option value="60" <?php is_days_sel(60);?>> 60 <?php echo $msg["days"]; ?> </option>
+<option value="10000" <?php is_days_sel(10000);?>> <?php echo $msg["all"]?> </option>
 </SELECT>
-<? if ($js == 0) { ?>
-&nbsp;<input type="submit" value="<?echo $msg["go"]; ?>">
-<? } ?>
+<?php if ($js == 0) { ?>
+&nbsp;<input type="submit" value="<?php echo $msg["go"]; ?>">
+<?php } ?>
 </SMALL>
 </div>
 </td>
 <td>
 <div align="right">
 <SMALL>
-<SELECT name=setlang onChange="xxx=daysfrm.elements['setlang']; if (xxx.options[xxx.selectedIndex].value != '<?echo $lang?>') {daysfrm.submit();}">
-<?
-while (list( $key, $val ) = each( $langs))
-{
-    $lang1 = $val;
-    list( $key, $val ) = each( $langs);
-    $lang2 = $val;
+<SELECT name=setlang onChange="xxx=daysfrm.elements['setlang']; if (xxx.options[xxx.selectedIndex].value != '<?php echo $lang?>') {daysfrm.submit();}">
+<?php
+for ($i = 0; $i < count($langs); $i += 2) {
+    $lang1 = $langs[$i];
+    $lang2 = $langs[$i + 1];
     $sel = is_lang_sel($lang1);
     echo "<option value=\"$lang1\" $sel> $lang2 </option>\n";
 }
 ?>
 </SELECT>
-<? if ($js == 0) { ?>
-&nbsp;<input type="submit" value="<?echo $msg["go"]; ?>">
-<? } ?> 
+<?php if ($js == 0) { ?>
+&nbsp;<input type="submit" value="<?php echo $msg["go"]; ?>">
+<?php } ?> 
 </SMALL>
 </div>
 </td>
 </table> 
-<input type="hidden" name="js" value="<? echo $js?>">
-<input type="hidden" name="open" value="<? if(!empty($open)) echo $opentemp = serialize($open); ?>">
+<input type="hidden" name="js" value="<?php echo $js?>">
+<input type="hidden" name="open" value="<?php if(!empty($open)) echo $opentemp = serialize($open); ?>">
 </FORM>
-<?
+<?php
 }
 ?>
