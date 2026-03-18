@@ -1,4 +1,4 @@
-<?
+<?php
 
 $msg["author"] = "Autore";
 $msg["date"]   = "Data";

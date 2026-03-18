@@ -1,4 +1,4 @@
-<?
+<?php
 
 $msg["author"] = "Forfatter";
 $msg["date"]   = "Dato";
