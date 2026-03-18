@@ -1,4 +1,4 @@
-<?php
+<?
 //Koi8-r
 
 $msg["author"] = "Автор";
