@@ -34,5 +34,5 @@ Download:
 </table>
 
 <center><h3>Forum demo</h3></center>
-<a href="admin.php3">Administration demo</a> (login: admin, password: change_it)
+<a href="admin.php">Administration demo</a> (login: admin, password: change_it)
 

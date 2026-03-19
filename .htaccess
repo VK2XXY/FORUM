@@ -1,6 +1,17 @@
-php3_gpc_order CGP
-php3_magic_quotes_runtime off
-php3_magic_quotes_gpc on
+# Apache2 configuration for PHP8 forum
+Options -Indexes
+DirectoryIndex index.php
 
-DirectoryIndex index.php3
+# URL rewriting for PHP3 backward compatibility
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.+)\.php3$ $1.php [R=301,L]
+</IfModule>
 
+# PHP settings
+<IfModule mod_php.c>
+    php_flag short_open_tag off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag short_open_tag off
+</IfModule>

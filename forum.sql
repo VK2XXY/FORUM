@@ -1,23 +1,16 @@
-# MySQL dump 5.13
-#
-# Host: localhost    Database: roma
-#--------------------------------------------------------
-# Server version	3.22.22
+-- MariaDB dump
+-- Compatible with MariaDB 10.x and MySQL 8.x
 
-#
-# Table structure for table 'forum'
-#
-CREATE TABLE forum (
-  id int(11) DEFAULT '0' NOT NULL auto_increment,
-  pid int(11),
-  times datetime,
-  subj varchar(128),
-  author varchar(50),
-  email varchar(50),
-  content text,
-  archive enum('Y','N'),
-  level int(11),
-  parent enum('Y','N'),
-  PRIMARY KEY (id)
-);
-
+CREATE TABLE IF NOT EXISTS `forum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) DEFAULT NULL,
+  `times` datetime DEFAULT NULL,
+  `subj` varchar(128) DEFAULT NULL,
+  `author` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `archive` enum('Y','N') DEFAULT 'N',
+  `level` int(11) DEFAULT NULL,
+  `parent` enum('Y','N') DEFAULT 'N',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
