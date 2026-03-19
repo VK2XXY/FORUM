@@ -10,7 +10,12 @@ if (empty($referer)) {
     $referer = $HTTP_REFERER;
 }
 
-if (isset($cancel)) header("Location: $referer");
+if (isset($cancel)) {
+    // Validate referer to prevent open redirect - only allow relative URLs
+    $safe_referer = (!empty($referer) && strpos($referer, '://') === false) ? $referer : 'index.php';
+    header("Location: $safe_referer");
+    exit;
+}
 
 if (!$db) {
     die("Database connection failed");

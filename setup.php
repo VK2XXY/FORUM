@@ -17,6 +17,7 @@ $AUTH_TYPE = $_SERVER['AUTH_TYPE'] ?? '';
 $default_lang = "en";
 
 ## List of available languages
+$langs = [];
 $langs[] = "en";
 $langs[] = "english";
 $langs[] = "ru";
@@ -98,6 +99,14 @@ $js_window_params = "directories=no,height=440,width=720,location=no,menubar=no,
 
 if (!isset($lang)) $lang = $default_lang;
 if (!empty($setlang)) $lang = $setlang;
+// Validate language code to prevent path traversal - derive valid codes from $langs array
+$valid_langs = [];
+for ($i = 0; $i < count($langs); $i += 2) {
+    $valid_langs[] = $langs[$i];
+}
+if (!in_array($lang, $valid_langs)) {
+    $lang = $default_lang;
+}
 include("lang_$lang.inc");
 
 function mouse_text($text)
